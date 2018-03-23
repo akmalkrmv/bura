@@ -1,0 +1,41 @@
+.card {
+    display: inline-block;
+    width: 130px;
+    height: 200px;
+    padding: 5px 10px;
+    margin-left: 20px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 6px 3px #eee;
+    cursor: pointer;
+}
+
+.card.selected,
+.card:hover {
+    box-shadow: 0 0 5px 3px #ddd;
+}
+
+.suit-holder.hearts,
+.suit-holder.diamonds {
+    color: red;
+}
+
+.suit-holder {
+    font-size: 1.3em;
+}
+
+.suit-holder.clubs::after {
+    content: '♣';
+}
+
+.suit-holder.spades::after {
+    content: '♠';
+}
+
+.suit-holder.hearts::after {
+    content: '♥';
+}
+
+.suit-holder.diamonds::after {
+    content: '♦';
+}
