@@ -24,18 +24,18 @@
     font-size: 1.3em;
 }
 
-.suit-holder.clubs::after {
+.suit-holder.clubs::before {
     content: '♣';
 }
 
-.suit-holder.spades::after {
+.suit-holder.spades::before {
     content: '♠';
 }
 
-.suit-holder.hearts::after {
+.suit-holder.hearts::before {
     content: '♥';
 }
 
-.suit-holder.diamonds::after {
+.suit-holder.diamonds::before {
     content: '♦';
 }
