@@ -1,6 +1,5 @@
 import { Suit, Card, Player, shuffle } from './';
 
-
 export class GameTable {
     cards: Card[] = [];
     players: Player[] = [];
