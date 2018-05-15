@@ -8,61 +8,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm">
-        
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
     <!-- Custom styles -->
     <link rel="stylesheet" href="src/css/main.css">
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" crossorigin="anonymous" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <!-- Vue.js: production version, optimized for size and speed -->
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
     <!-- Bundle -->
-    <script src="dist/bundle.js"></script>
+    <!-- <script src="dist/bundle.js"></script> -->
 
     <title>Bura | 4 card variation</title>
 </head>
 
 <body>
-    <div class="app">
-        <div>
-            <div class="card backside"></div>
-            <div class="card backside"></div>
-            <div class="card backside"></div>
-            <div class="card backside"></div>
+    <div class="app container">
+
+        <div class="text-center" v-for="player in players" v-bind:class="{backside: player.backside}" v-on:click="player.backside=!player.backside">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>{{player.name}}</h2>
+                    <div class="card-holder" v-for="card in player.cards">
+                        <span class="card front" v-bind:class="[card.suit]">{{card.text}}</span>
+                        <span class="card back"></span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div>
-            <div class="card">
-                <span class="suit-holder spades">10</span>
-            </div>
-            <div class="card">
-                <span class="suit-holder hearts">6</span>
-            </div>
-            <div class="card">
-                <span class="suit-holder clubs">Q</span>
-            </div>
-            <div class="card">
-                <span class="suit-holder diamonds">A</span>
-            </div>
-        </div>
     </div>
 
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                message: 'Hello Vue!'
-            }
-        });
-    </script>
-
+    <script src="src/js/app.js"></script>
 </body>
 
 </html>

@@ -1,13 +1,22 @@
-.card {
+.card-holder {
+    position: relative;
     display: inline-block;
-    width: 130px;
-    height: 200px;
-    padding: 5px 10px;
+    cursor: pointer;
     margin-left: 20px;
     margin-top: 20px;
-    border: 1px solid #ccc;
+}
+
+.card {
+    display: inline-block;
+    width: 140px;
+    height: 180px;
+    line-height: 160px;
     box-shadow: 0 0 6px 3px #eee;
-    cursor: pointer;
+    font-size: 2.7em;
+    text-align: center;
+    vertical-align: middle;
+    transition: 1s all ease;
+    backface-visibility: hidden;
 }
 
 .card.selected,
@@ -15,27 +24,49 @@
     box-shadow: 0 0 5px 3px #ddd;
 }
 
-.suit-holder.hearts,
-.suit-holder.diamonds {
+.card.hearts,
+.card.diamonds {
     color: red;
 }
 
-.suit-holder {
-    font-size: 1.3em;
-}
-
-.suit-holder.clubs::before {
+.card.clubs::before {
     content: '♣';
 }
 
-.suit-holder.spades::before {
+.card.spades::before {
     content: '♠';
 }
 
-.suit-holder.hearts::before {
+.card.hearts::before {
     content: '♥';
 }
 
-.suit-holder.diamonds::before {
+.card.diamonds::before {
     content: '♦';
+}
+
+.card.back {
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: rotateY(180deg);
+}
+
+.card.back::after {
+    content: '';
+    position: absolute;
+    left: 12%;
+    top: 10%;
+    width: 76%;
+    height: 80%;
+    background-color: #aaa;
+    box-shadow: 0 0 1px 0px;
+}
+
+.backside .card.front {
+    transform: rotateY(180deg);
+}
+
+.backside .card.back {
+    transform: rotateY(0);
 }
