@@ -4,11 +4,17 @@ export class GameTable {
     cards: Card[] = [];
     players: Player[] = [];
 
+    trumpSuit: Suit = Suit.clubs;
+    cardsOnTable: Card[] = [];
+    currentMover: Player = new Player();
+
     deal() {
         if (!this.cards.length)
             return console.log('no cards left'), false;
 
-        for (let index = 0; index < 4; index++) {
+        var cardsCount = 4 - this.currentMover.cards.length;
+
+        for (let index = 0; index < cardsCount; index++) {
 
             this.players.forEach(player => {
                 let card = this.cards.pop();
@@ -38,11 +44,17 @@ export class GameTable {
     resetCardDeck() {
         this.cards = [];
 
-        for (let value = 6; value < 15; value++) {
-            this.cards.push(new Card(Suit.clubs, value, this.convertToCardText(value), this.convertToBuraPoints(value), Card.convetToUTFSuit(Suit.clubs)));
-            this.cards.push(new Card(Suit.hearts, value, this.convertToCardText(value), this.convertToBuraPoints(value), Card.convetToUTFSuit(Suit.hearts)));
-            this.cards.push(new Card(Suit.spades, value, this.convertToCardText(value), this.convertToBuraPoints(value), Card.convetToUTFSuit(Suit.spades)));
-            this.cards.push(new Card(Suit.diamonds, value, this.convertToCardText(value), this.convertToBuraPoints(value), Card.convetToUTFSuit(Suit.diamonds)));
+        for (let value = 6; value <= 15; value++) {
+
+            if (value == 10) continue;
+
+            let text = this.convertToCardText(value);
+            let points = this.convertToBuraPoints(value);
+
+            this.cards.push(new Card(Suit.clubs, value, text, points, Card.convetToUTFSuit(Suit.clubs)));
+            this.cards.push(new Card(Suit.hearts, value, text, points, Card.convetToUTFSuit(Suit.hearts)));
+            this.cards.push(new Card(Suit.spades, value, text, points, Card.convetToUTFSuit(Suit.spades)));
+            this.cards.push(new Card(Suit.diamonds, value, text, points, Card.convetToUTFSuit(Suit.diamonds)));
         }
     }
 
@@ -51,7 +63,8 @@ export class GameTable {
             case 11: return 'J';
             case 12: return 'Q';
             case 13: return 'K';
-            case 14: return 'A';
+            case 14: return '10';
+            case 15: return 'A';
             default: return value.toString();
         }
     }
@@ -64,8 +77,8 @@ export class GameTable {
             case 13: return 4;
 
             // 10 and Ace
-            case 10: return 10;
-            case 14: return 11;
+            case 14: return 10;
+            case 15: return 11;
 
             default: return 0;
         }
