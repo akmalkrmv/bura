@@ -31,16 +31,18 @@
 <body>
     <div class="app container">
 
-        <div class="text-center" v-for="player in players" v-bind:class="{backside: player.backside}" v-on:click="player.backside=!player.backside">
+        <div class="text-center" v-for="player in players">
             <div class="row">
                 <div class="col-md-12">
                     <h2>{{player.name}}</h2>
-                    <div class="card-holder" v-for="card in player.cards">
+                    <div class="card-holder" v-for="card in player.cards" v-on:click="card.backside=!card.backside" v-bind:class="{backside: card.backside}">
                         <span class="card front" v-bind:class="[card.suit]">{{card.text}}</span>
                         <span class="card back"></span>
                     </div>
                 </div>
             </div>
+            <br>
+            <br>
         </div>
 
     </div>

@@ -15,7 +15,7 @@
     font-size: 2.7em;
     text-align: center;
     vertical-align: middle;
-    transition: 1s all ease;
+    transition: .7s all ease;
     backface-visibility: hidden;
 }
 
@@ -63,10 +63,12 @@
     box-shadow: 0 0 1px 0px;
 }
 
-.backside .card.front {
+.backside .card.front,
+.backside.card.front {
     transform: rotateY(180deg);
 }
 
-.backside .card.back {
+.backside .card.back,
+.backside.card.back {
     transform: rotateY(0);
 }
